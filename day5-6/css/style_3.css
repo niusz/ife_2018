@@ -1,0 +1,55 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+}
+#resume{
+	position: absolute;
+	width: 60%;
+	margin: auto;
+	left:5%;
+	right: 5%;
+	padding:10px 50px;
+}
+#resume div{
+	text-indent: 30px;
+}
+#title{
+	height: 70px;
+	vertical-align: center;
+	line-height: 70px;
+	background-color: #c7b5b5;
+	color: white;
+}
+.lbody{
+	background-color: #8e8888;
+	width: 15%;
+	height: 100px;
+	line-height: 100px;
+	margin-bottom: 2px;
+	float: left;
+}
+.rbody{
+	float: right;
+	width: 85%;
+	height: 100px;
+	margin-bottom: 2px;
+}
+.borderline{
+	overflow: hidden;
+	border: 0.5px solid black;
+}
+ul{
+/*	display: inline-block;*/
+	list-style-type: none;
+	padding-top: 10px;
+}
+#jiben ul li, #lianxi ul li{
+	float: left;
+}
+span{
+	font-family: "Times New Roman",Georgia,Serif;
+	font-weight: 1000;
+}
