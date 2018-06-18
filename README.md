@@ -1,4 +1,3 @@
 # ife_2018
 
-第五天和第六天作业：三种简历
-只做了最后一种简历。
+[demo](https://tttrick.github.io/ife_2018/day7-8/index.html)
