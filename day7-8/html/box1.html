@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两栏，左30%，右70%</title>
+	<style type="text/css">
+		.left-float{
+			width: 30%;
+			height: 200px;
+			background: red;
+			float: left;
+		}
+		.right-float{
+			width: 70%;
+			height: 200px;
+			background: yellow;
+			float: left;
+		}
+
+		.left-pos{
+			position: absolute;
+			width: 30%;
+			background: red;
+			left: 0;
+		}
+		.right-pos{
+			position: absolute;
+			width: 70%;
+			background: yellow;
+			right: 0;
+		}
+
+		#container{
+			display: flex;
+		}
+		.left-flex{
+			flex: 3;
+			height: 100px;
+			background: red;
+		}
+		.right-flex{
+			flex: 7;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="left-flex">左边</div>
+		<div class="right-felx">右边</div>
+	</div>
+</body>
+</html>
