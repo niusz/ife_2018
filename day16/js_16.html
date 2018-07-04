@@ -28,7 +28,13 @@
                 result.innerHTML = parseInt(document.getElementById("first-number").value) * parseInt(document.getElementById("second-number").value);
             };
             divide.onclick = function(){
-                result.innerHTML = parseInt(document.getElementById("first-number").value) / parseInt(document.getElementById("second-number").value);
+                var first = parseInt(document.getElementById("first-number").value);
+                var second = parseInt(document.getElementById("second-number").value);
+                if (second !== 0){
+                    result.innerHTML = parseInt(document.getElementById("first-number").value) / parseInt(document.getElementById("second-number").value);
+                } else {
+                    result.innerHTML = "第二数字不能为0，请重新输入"
+                }
             };
     </script>
 </body>
