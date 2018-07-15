@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 事件委托只写一个事件，点击添加新的li -->
+    <ul>
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+        <li>44</li>
+    </ul>
+    <button id="btn">点击添加li</button>
+    <button id="btn-del">点击删除li</button>
+    <script>
+        var btn = document.getElementById("btn");
+        var btn_del = document.getElementById("btn-del");
+        var ulid = document.getElementsByTagName("ul")[0];
+        var lilist = ulid.getElementsByTagName("li");
+        var flag = 4;
+        for(var i = 0; i < lilist.length; i++){
+            lilist[i].index = true;
+        }
+        
+        ulid.addEventListener("click",function(event){
+            var event = event || window.event;
+            var target = event.target || event.srcElement;
+            if(target.nodeName.toLowerCase() == "li"){
+                if(target.index){
+                    target.style.background = "red";
+                    target.index = false;
+                }else{
+                    target.style.background = "none";
+                    target.index = true;
+                }
+            }
+        }, false);
+        
+        btn.addEventListener("click", function(event){
+            flag++;
+            var oLi = document.createElement("li");
+            oLi.innerHTML = 11 * flag;
+            oLi.index = true;
+            ulid.appendChild(oLi);
+        }, false);
+        
+        btn_del.addEventListener("click", function(event){
+            flag--;
+            ulid.removeChild(ulid.lastChild);
+        }, false);
+    </script>
+</body>
+</html>

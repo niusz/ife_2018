@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入检测</title>
+</head>
+<body>
+	<input id="name" type="text">    
+	<button id="submit-btn">Submit</button>
+	<script type="text/javascript">
+		var sub = document.getElementById("submit-btn");
+		var inp = document.getElementById("name");
+		sub.onclick = function(){
+			console.log(inp.value);
+		}
+		inp.onkeypress = function(event){
+			if(event.keyCode == 13){
+				console.log(inp.value);
+			}
+		}
+		inp.onkeyup = function(event){
+			if(event.keyCode == 27){
+				inp.value = '';
+				alert('我要删掉了');
+			}
+		}
+	</script>
+</body>
+</html>

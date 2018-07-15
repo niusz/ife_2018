@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000;"></div>
+    <button id="fade-btn">淡出</button>
+    <script>
+        //1、设置禁用button的目的，是防止触发多次定时器
+        //2、可以通过每次点击button，设置清除定时器，所以定期器id得是全局变量t
+        
+        var fobj = document.getElementById("fade-obj");
+        var fbtn = document.getElementById("fade-btn");
+        var t;
+
+        function fadeIn(){
+            if(!fobj.style.opacity){
+                fobj.style.opacity = 0;
+            }
+            fobj.style.opacity = parseFloat(fobj.style.opacity) + 0.1;
+            console.log(fobj.style.opacity);
+            t = setTimeout(fadeIn, 100);
+            if(parseFloat(fobj.style.opacity) == 1){
+                clearTimeout(t);
+                // fbtn.disabled  = false;
+                fbtn.textContent = "淡出";
+            }
+        }
+
+        function fadeOut(){
+            if(!fobj.style.opacity){
+                fobj.style.opacity = 1;
+            }
+            fobj.style.opacity = parseFloat(fobj.style.opacity) - 0.1;
+            console.log(fobj.style.opacity);
+            t = setTimeout(fadeOut, 100);
+            if(parseFloat(fobj.style.opacity) == 0){
+                clearTimeout(t);
+                // fbtn.disabled  = false;
+                fbtn.textContent = "淡入";
+            }
+
+        }
+
+        fbtn.addEventListener("click",function(){
+            if (fbtn.textContent == "淡入"){
+                clearTimeout(t);
+                fadeIn();
+                // fbtn.disabled  = true;
+            }else{
+                clearTimeout(t);
+                fadeOut();
+                // fbtn.disabled  = true;
+            }
+        },false);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #clown{
+            background-image: url("img/clown.jpg");
+            background-repeat: no-repeat;
+            margin: 0 auto;
+            width: 500px;
+            height: 500px;
+            background-position: 0px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="clown"></div>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById("clown");
+            oDiv.style.backgroundPositionY = "-480px";
+            console.log(oDiv.style.backgroundPositionY);
+            var count = 0;
+            var speed = -480;
+            change();
+            function change(){
+                if(speed > 0){
+                    count --;
+                }
+                if(speed <= 0){
+                    count ++;
+                }
+                if(count == 0){
+                    speed = -480;
+                }
+                if(count == 15){
+                    speed = 480;
+                }
+                oDiv.style.backgroundPositionY = parseInt(oDiv.style.backgroundPositionY) + speed + 'px';
+                var t = setTimeout(change, 100);
+            }
+        }
+    </script>
+</body>
+</html>
