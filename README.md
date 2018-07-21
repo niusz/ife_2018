@@ -7,3 +7,5 @@
 [day17-18,demo](https://tttrick.github.io/ife_2018/day17-day18/code4_hello.html)
 
 [day-20-21,demo](https://tttrick.github.io/ife_2018/day20-day21/sprite_test2.html)
+
+[day22-24,demo]((https://tttrick.github.io/ife_2018/day22-24/test4_object.html)
