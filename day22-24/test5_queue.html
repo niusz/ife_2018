@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="queue-input" type="text">
+    <p id="queue-cont">队列内容：apple-&gt;pear</p>    
+    <button id="in-btn">入队</button>
+    <button id="out-btn">出队</button>
+    <button id="font-btn">打印队头元素内容</button>
+    <button id="empty-btn">判断队列是否为空</button>
+    <div>
+        <ul>
+            <li>push,末尾添加元素，返回长度</li>
+            <li>pop，删除返回最后一个元素</li>
+            <li>shift，删除返回第一个元素</li>
+            <li>unshift，开头添加元素，返回长度</li>
+        </ul>
+    </div>
+
+    <script>
+        var queue = ["apple", "pear"]; 
+        var inBtn = document.getElementById("in-btn");
+        var outBtn = document.getElementById("out-btn");
+        var fontBtn = document.getElementById("font-btn");
+        var emptyBtn = document.getElementById("empty-btn");
+        var queueCont = document.getElementById("queue-cont");
+
+        inBtn.addEventListener("click", function(){
+            var value = document.getElementById("queue-input").value;
+            if(value){
+                queue.push(value);
+            }else{
+                alert("输入的为空值，请重新输入");
+            }
+            queueCont.innerHTML = "队列内容：" + queue.join('->');
+        }, false);
+        
+        outBtn.addEventListener("click", function(){
+            queue.pop();
+            queueCont.innerHTML = "队列内容：" + queue.join('->');
+        }, false);
+
+        fontBtn.addEventListener("click", function(){
+            queueCont.innerHTML = "队列内容：" + queue.join('->');
+        }, false);
+
+        emptyBtn.addEventListener("click", function(){
+            if(queue.length < 1){
+                alert("队列为空，请添加元素");
+            }
+        }, false);
+    </script>
+</body>
+</html>

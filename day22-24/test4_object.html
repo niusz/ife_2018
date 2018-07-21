@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+    <img src="btree.png" alt="二叉树">
+    <script>
+        var tree = {
+            "id": 0,
+            "name": "root",
+            "left": {
+                "id": 1,
+                "name": "Simon",
+                "left": {
+                    "id": 3,
+                    "name": "Carl",
+                    "left": {
+                        "id": 7,
+                        "name": "Lee",
+                        "left": {
+                            "id": 11,
+                            "name": "Fate"
+                        }
+                    },
+                    "right": {
+                        "id": 8,
+                        "name": "Annie",
+                        "left": {
+                            "id": 12,
+                            "name": "Saber"
+                        }
+                    }
+                },
+                "right": {
+                    "id": 4,
+                    "name": "Tony",
+                    "left": {
+                        "id": 9,
+                        "name": "Candy"
+                    }
+                }
+            },
+            "right": {
+                "id": 2,
+                "name": "right",
+                "left": {
+                    "id": 5,
+                    "name": "Carl",
+                },
+                "right": {
+                    "id": 6,
+                    "name": "Carl",
+                    "right": {
+                        "id": 10,
+                        "name": "Kai"
+                    }        
+                }
+            }
+        }
+
+        // 假设id和name均不会重复，根据输入name找到对应的id
+        function findIdByName(name) {
+            function find(objt, name){
+                if(objt.name === name){
+                    console.log(objt.id);
+                    return objt.id;
+                }
+                if(objt.left){
+                    find(objt.left, name);
+                }
+                if(objt.right){
+                    find(objt.right, name);
+                }
+            }
+            var obj = tree;
+            find(obj, name);
+        }
+        // findIdByName('Kai');
+
+        // 假设id和name均不会重复，根据输入id找到对应的name
+        function findNameById(id) {
+            var obj = tree;
+            function find(objt, id){
+                if(objt.id === id){
+                    console.log(objt.name);
+                    return objt.name;
+                }
+                if(objt.left){
+                    find(objt.left, id);
+                }
+                if(objt.right){
+                    find(objt.right, id);
+                }
+            }
+            find(tree, id);
+        }
+        // findNameById(10);
+
+
+        // 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+        //根、左、右
+        function getListWithDLR() {
+            function putObj(objt){
+                if(objt){
+                    console.log(objt.name);
+                }
+                if(objt.left){
+                    putObj(objt.left);
+                }
+                if(objt.right){
+                    putObj(objt.right);
+                }
+            }
+            putObj(tree);
+        }
+        // getListWithDLR();
+
+        // 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+        //左、根、右
+        function getListWithLDR() {
+            function putObj(objt){
+                if(objt){
+                    if(objt.left){
+                        putObj(objt.left);
+                    }
+                    console.log(objt.name);
+                    if(objt.right){
+                        putObj(objt.right);
+                    }
+                }
+            }
+            putObj(tree);
+        }
+        // getListWithLDR();
+
+        // 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+        //左、右、根
+        function getListWithLRD() {
+            function putObj(objt){
+                if(objt){
+                    if(objt.left){
+                        putObj(objt.left);
+                    }
+                    if(objt.right){
+                        putObj(objt.right);
+                    }
+                    console.log(objt.name)
+                }
+            }
+            putObj(tree);
+        }
+        getListWithLRD();
+    </script>
+</body>
+</html>

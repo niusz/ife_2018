@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var scoreObject = {
+            "Tony": {
+                "Math": 95,
+                "English": 79,
+                "Music": 68
+            }, 
+            "Simon": {
+                "Math": 100,
+                "English": 95,
+                "Music": 98
+            }, 
+            "Annie": {
+                "Math": 54,
+                "English": 65,
+                "Music": 88
+            }
+        }
+    
+        var menuArr = [
+            [1, "Area1", -1],
+            [2, "Area2", -1],
+            [3, "Area1-1", 1],
+            [4, "Area1-2", 1],
+            [5, "Area2-1", 2],
+            [6, "Area2-2", 2],
+            [7, "Area1-2-3", 4],
+            [8, "Area2-2-1", 6],
+        ];
+
+        //对象转数组
+        function objToArray(obj){  
+            var result = [];
+            var index = 0;
+            for(sub in obj){
+                result[index] = [];
+                var subObj = obj[sub];
+                result[index].push(sub);
+                for(pro in subObj){
+                    var subObjPro = subObj[pro];
+                    result[index].push(subObjPro);
+                }
+                index ++;
+            }
+            return result;
+        }
+
+var menuObject = {
+    "1": {
+        name: "Area1",
+        subMenu: {
+            "3": {
+                name: "Area1-1"
+            },
+            "4": {
+                name: "Area1-2",
+                subMenu: {
+                    "7": {
+                        name: "Area1-2-3"
+                    }
+                }
+            }
+        }
+    }
+}     
+console.log(menuObject)
+
+
+        //数组转对象
+        function arrayToObj(arrayList){
+            var obj = new Object();
+            var objList = [];
+            for(var i = 0; i < arrayList.length; i++){
+                var subobj = new Object();
+                subobj[arrayList[i][0].toString()] = {name: arrayList[i][1]};
+                objList.push(subobj);
+            }
+            console.log(objList);
+            for(var j = 0; j < arrayList.length; j++){
+                for(var t = 0; t < arrayList.length; t++){
+                    if(arrayList[j][2] < 0){
+                        obj[arrayList[j][0].toString()] = objList[j];
+                    }
+                    if(arrayList[j][2] == arrayList[t][0]){
+                        objList[t].subMenu = objList[j];
+                    }
+                }
+            }
+            console.log(obj);
+        }
+        arrayToObj(menuArr);
+
+    </script>
+</body>
+</html>
