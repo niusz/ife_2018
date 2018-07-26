@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>吃苹果</title>
+</head>
+<body>
+    <select id="year-select">
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+    </select>
+    
+    <select id="month-select">
+    </select>
+    
+    <select id="day-select">
+    </select>
+    
+    <select id="hour-select">
+    </select>
+    
+    <select id="minite-select">
+    </select>
+    
+    <select id="second-select">
+    </select>
+    
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+
+    <script>
+        //1、注意文案，已经过去，还有
+        //2、注意每月的日期不同
+        
+        //通过select标签元素，返回其被选中的选项值
+        function returnSelect(selectOpt){
+            var options = selectOpt.querySelectorAll('option');
+            var index = selectOpt.selectedIndex;
+            var optValue = options[index];
+            return optValue.value;
+        }
+        
+        //获取当前所有select值，组合返回时间格式
+        function selectTime(){
+            var year = returnSelect(document.getElementById("year-select"));
+            var month = parseInt(returnSelect(document.getElementById("month-select"))) - 1;
+            var day = returnSelect(document.getElementById("day-select"));
+            var hour = returnSelect(document.getElementById("hour-select"));
+            var minite = returnSelect(document.getElementById("minite-select"));
+            var second = returnSelect(document.getElementById("second-select"));
+            var newTime = new Date(year, month, day, hour, minite, second);
+            return newTime;
+        }
+
+        //根据所选的时间，返回 2001年1月1日星期X HH:MM:SS格式
+        function formatTime(time){
+            var year = time.getFullYear();
+            var month = parseInt(time.getMonth()) - 1;
+            var day = time.getDate();
+            var hour = time.getHours();
+            var minute = time.getMinutes();
+            var second = time.getSeconds();
+            var weekList = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            var weekday = weekList[time.getDay()];
+            var stringTime = "现在距离 " + year + "年" + month + "月" + day + "日" + weekday + " " + addDouble(hour) + ":" + addDouble(minute) + ":" + addDouble(second) + " ";
+            return stringTime;
+        }
+        
+        //计算选中时间或当前时间的差值，返回 现在距离 2001年1月1日星期X HH:MM:SS 还有格式
+        function getDist(time){
+            var currentTime = new Date();
+            var ms = time.getTime() - currentTime.getTime();
+            var desc = "还有";
+            if(ms < 0){
+                desc = "已经过去";
+            }
+            var absms = Math.abs(ms); // 获取正数
+            var dayRemain = absms % (24 * 60 * 60 * 1000); //不满一天
+            var day = Math.floor(absms / (24 * 60 * 60 * 1000));
+            var hourRemain = dayRemain % (60 * 60 * 1000);//不满一小时
+            var hour = Math.floor(dayRemain / (60 * 60 * 1000));
+            var miniteRemain = hourRemain % (60 * 1000); //不满一分钟
+            var minite = Math.floor(hourRemain / (60 * 1000));
+            var second = Math.floor(miniteRemain / 1000);
+            return desc +  day + "天" + hour + "小时" + minite + "分" +  second +  "秒";
+        }
+
+        //判断某个值是否在列表中，返回true或者false
+        function inList(x, list){
+            for(var i = 0; i < list.length; i++){
+                if(x == list[i]){ //用 == 忽略字符串格式的数字
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //返回两位数
+        function addDouble(i){
+            if(i < 10){
+                return '0' + i;
+            }else{
+                return i;
+            }
+        }
+
+        //判断是否为闰年
+        function isLeapYear(year){
+            var x = parseInt(year);
+            if(x % 100 == 0){
+                if(x % 400 == 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else if(x % 4 == 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        //option批量生成工厂,放在哪个select对象下，放多少个
+        function productOptions(select, first, count){
+            for(var i = first; i < count; i++){
+                var opt = document.createElement("option");
+                var node = document.createTextNode(addDouble(i));
+                opt.value = i;
+                opt.appendChild(node);
+                select.appendChild(opt);
+            }
+        }
+        
+        var selectYear = document.getElementById("year-select");
+        var selectMonth = document.getElementById("month-select");
+        var selectDay = document.getElementById("day-select");
+        var selectHour = document.getElementById("hour-select")
+        var selectMinite = document.getElementById("minite-select");
+        var selectSecond = document.getElementById("second-select");
+        var wrapper = document.getElementById("result-wrapper");
+        
+        //页面加载后，自动生成小时，分，秒
+        window.addEventListener('load', function(){
+            productOptions(selectMonth, 1, 12);
+            productOptions(selectDay, 1, 31);
+            productOptions(selectHour, 0 ,25);
+            productOptions(selectMinite, 0, 60);
+            productOptions(selectSecond, 0, 60);
+        }, false);
+        
+        //改变年份时，若选中了闰年，则相应的改变2月份的天数
+        selectYear.addEventListener('change', function(){
+            var leap = 29;
+            var year = returnSelect(selectYear); 
+            var month = returnSelect(selectMonth); //年份里面关联了月份，解耦性不强。
+            if(isLeapYear(year)){ //判断闰年
+                leap = 30;
+            }
+            var m3 = [2];
+            if(inList(month, m3)){
+                selectDay.innerHTML = '';
+                productOptions(selectDay, 1, leap);
+            }
+        }, false);
+
+        //改变月份时，js生成相应的天数
+        selectMonth.addEventListener('change', function(){
+            var month = returnSelect(this);
+            var year = returnSelect(selectYear); //月份里面关联年份，解耦性不强。
+            var m1 = [1, 3, 5 ,7, 8, 10, 12];
+            var m2 = [4, 6, 9, 11];
+            var m3 = [2]; 
+
+            //可以在写一个判断为闰年返回月份的函数
+            var leap = 29;
+            if(isLeapYear(year)){
+                leap = 30;
+            }
+            if(inList(month, m1)){
+                selectDay.innerHTML = '';
+                productOptions(selectDay, 1, 32);
+            }
+            if(inList(month, m2)){
+                selectDay.innerHTML = '';
+                productOptions(selectDay, 1, 31);
+            }
+            if(inList(month, m3)){
+                selectDay.innerHTML = '';
+                productOptions(selectDay, 1, leap);
+            }
+        }, false);
+        
+        //通过添加change事件，获取各个select的当前选中值组合成最终结果。
+        var selects = document.getElementsByTagName("select");
+        for(var i = 0; i < selects.length; i++){
+            selects[i].addEventListener('change', function(){
+                var select = selectTime();
+                var nowTemp = formatTime(select);
+                var distTemp = getDist(select);
+                wrapper.innerHTML = nowTemp + distTemp;
+            }, false);
+        }
+        
+   </script>
+</body>
+</html>

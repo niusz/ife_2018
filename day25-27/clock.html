@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clock</title>
+</head>
+<body>
+    <p id="show-clock"></p>
+    <button id="stop">停止时间</button>
+    <script>
+        //1、页面显示时间函数
+        var t;
+        function showTime(){
+            var myDate = new Date();
+            var year = myDate.getFullYear();
+            var month = fillTime(myDate.getMonth());
+            var day = fillTime(myDate.getDate());
+            var week = getWeek(myDate.getDay());
+            var hh = fillTime(myDate.getHours());
+            var mm = fillTime(myDate.getMinutes());
+            var ss = fillTime(myDate.getSeconds());
+            var noon = getNoon(hh);
+            var result = year + '-' + month + '-' + day + ' ' + week + ' ' + hh + ':' + mm + ':' + ss + ' ' + noon;
+            var p = document.getElementById("show-clock");
+            p.innerHTML = result;
+            t = setTimeout(showTime, 1000);
+        }
+
+        window.onload = showTime;
+        var stopTime = document.getElementById("stop");
+        stopTime.addEventListener("click", function(){
+            clearTimeout(t);
+        }, false)
+
+
+        //2、位数补齐函数
+        function fillTime(num){
+            if(num < 10){
+                return '0' + num;
+            }else{
+                return num;
+            }
+        }
+
+        //3、返回周几
+        function getWeek(day){
+            // var week = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+            var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            return week[day];
+        }
+
+        function getNoon(hours){
+            if(hours < 12){
+                return "PM";
+            }else{
+                return "AM";
+            }
+        }
+
+    </script>
+</body>
+</html>
