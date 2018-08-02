@@ -13,3 +13,5 @@
 [day25-27,clock](https://tttrick.github.io/ife_2018/day25-27/selectTime_refactor.html)
 
 [day28-30,email](https://tttrick.github.io/ife_2018/day28-30/setemail123.html)
+
+[day31.sell](https://tttrick.github.io/ife_2018/day31/sell2.html)
