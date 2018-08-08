@@ -15,3 +15,5 @@
 [day28-30,email](https://tttrick.github.io/ife_2018/day28-30/setemail123.html)
 
 [day31.sell](https://tttrick.github.io/ife_2018/day31/sell2.html)
+
+[day34-36,drawLine](https://tttrick.github.io/ife_2018/day34-36/drawChart.html)
