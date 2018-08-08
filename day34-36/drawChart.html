@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绘制图表</title>
+    <style>
+        #wrapper-random{
+            margin: 20px 0 20px 0;
+        }
+        p{
+            width: 400px;
+            height: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            /* word-break: break-all; */
+        }
+        p:hover{
+            white-space: normal;
+            overflow: visible;
+            word-break: break-all;
+            /* word-wrap: break-word; */
+        }
+    </style>
+</head>
+<body>
+    <h2>产生指定个数不重复的随机数</h2>
+    <div id="wrapper-random">
+        <input type="number" id="min" placeholder="请输入最小值">
+        <input type="number" id="max" placeholder="请输入最大值">
+        <input type="number" id="number" placeholder="请输入随机数个数">
+        <input type="button" id="btn1" value="方法一：删除">
+        <input type="button" id="btn2" value="方法二：随机序">
+    </div>
+    <div>
+        <span>结果： </span>
+        <p id="result">
+
+                053,530,984,91,392,445,188,792,230,535,1195,791,573,107,394,550,425,430,515,405,195,466,475,448,146,809,182,1134,35,675,437,192,245,200,785,1005,1152,960,732,1125,459,684,574,263,735,609,12
+
+        </p>
+    </div>
+    <div>
+        <span>耗时：</span>
+        <p id="costTime"></p>
+    </div>
+    <h2>利用canvas绘制折线图</h2>
+    <canvas id="product-draw" width="1000" height="1000"></canvas>
+
+    <script src="./js/chart.js"></script>
+    <script src="./data/ife31data.js"></script>
+    <script src="./js/random.js"></script>
+</body>
+</html>
