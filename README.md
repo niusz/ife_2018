@@ -16,4 +16,6 @@
 
 [day31.sell](https://tttrick.github.io/ife_2018/day31/sell2.html)
 
-[day34-36,drawLine](https://tttrick.github.io/ife_2018/day34-36/drawChart.html)
+[day34-36,canvas](https://tttrick.github.io/ife_2018/day34-36/drawChart.html)
+
+[day34-36, localStorage](https://tttrick.github.io/ife_2018/day37-38/localStorage.html)
