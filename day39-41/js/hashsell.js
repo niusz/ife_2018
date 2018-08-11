@@ -1,4 +1,5 @@
 var inputs = document.getElementsByClassName('sub'); //子选框
+var allinputs = document.getElementsByTagName('input'); //未规划好，要临时给全选的添加事件
 
 /**
  * 获取所有选中状态，返回其value串，用&隔开
@@ -22,8 +23,8 @@ function getChecked(containerObj){
  * 将选中状态新渲染成hash，通过函数防止变量污染
  */
 function runHash(){
-    for(var i = 0; i < inputs.length; i ++){
-        inputs[i].addEventListener('change', function(){
+    for(var i = 0; i < allinputs.length; i ++){
+        allinputs[i].addEventListener('change', function(){
             var paraStr = getChecked(document.body);
             window.location.hash = encodeURI(paraStr);
         }, false);
