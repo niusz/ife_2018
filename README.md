@@ -18,4 +18,8 @@
 
 [day34-36,canvas](https://tttrick.github.io/ife_2018/day34-36/drawChart.html)
 
-[day34-36, localStorage](https://tttrick.github.io/ife_2018/day37-38/localStorage.html)
+[day37-36, localStorage](https://tttrick.github.io/ife_2018/day37-38/localStorage.html)
+
+[day39-41, location.hash](https://tttrick.github.io/ife_2018/day39-41/hashsell.html)
+
+
