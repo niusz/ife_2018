@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/sell.css">
+    <title>全选</title>
+    <script>
+        var t1 = new Date().getTime();
+    </script>
+</head>
+<body>
+    <div id="region-redio-wrapper"></div>
+    <div id="product-redio-wrapper"></div>
+    <div id="table-wrapper"></div>
+    <br><br>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    <button id="d">D</button>
+    <button id="e">E</button>
+    <button id="f">F</button>
+    <div id="contABC">div1</div>
+    <div id="contDEF">div2</div>
+    <script src="./data/ife31data.js"></script>
+    <script src="./js/checkall.js"></script>
+    <script src="./js/hashsell.js"></script>
+    <script src="./js/hashtest.js"></script>
+    <script>
+        window.addEventListener('load', function(){
+            var t2 = new Date().getTime();
+            cost ='耗时：' + ((t2 - t1) / 1000) + ' 秒';
+            var divtime = document.createElement('div');
+            var text = document.createTextNode(cost);
+            divtime.appendChild(text);
+            document.body.appendChild(divtime);
+        }, false);
+    </script>
+</body>
+</html>
