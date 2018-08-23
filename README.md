@@ -22,4 +22,6 @@
 
 [day39-41, location.hash](https://tttrick.github.io/ife_2018/day39-41/hashsell.html)
 
+[day44-46, singleInstance](https://tttrick.github.io/ife_2018/day44-46/instance.html)
+
 
