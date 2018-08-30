@@ -24,4 +24,6 @@
 
 [day44-46, singleInstance](https://tttrick.github.io/ife_2018/day44-46/instance.html)
 
+[day47-49, dinning](https://tttrick.github.io/ife_2018/day44-46/promise.html)
+
 
